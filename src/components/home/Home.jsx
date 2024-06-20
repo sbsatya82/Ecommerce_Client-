@@ -10,22 +10,22 @@ import PromoBanner from './PromoBanner';
 import Featured from './Featured';
 
 const Home = ()=> {
-  const dispatch = useDispatch();
-  useEffect(()=>{
-    const fetchData = async()=>{
-      try {
-        const {data} = await axios.get('/api/v1/me');
-        console.log(data);
-        if(data.success ===true){
-          const loggedInUser = data.user;
-          dispatch(login(loggedInUser));
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    fetchData();
-  },[])
+  // const dispatch = useDispatch();
+  // useEffect(()=>{
+  //   const fetchData = async()=>{
+  //     try {
+  //       const {data} = await axios.get('/api/v1/me');
+  //       console.log(data);
+  //       if(data.success ===true){
+  //         const loggedInUser = data.user;
+  //         dispatch(login(loggedInUser));
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  //   fetchData();
+  // },[])
   return (
     <>
       <Hero/>

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import './ReviewCard.css'
 import { addToCart } from "../../reducers/cartSlice";
+import { loadCart } from "../../action/action";
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -47,7 +48,7 @@ function ProductDetails() {
       const { data } = await axios.post(`/api/v1/cart/new`,{
         productId : productId,
       });
-      console.log(data);
+      await loadCart(dispatch);
     }
     catch(error){
       console.log(error)

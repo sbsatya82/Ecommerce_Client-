@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { itemRemoveFromCart } from "../../action/action";
+import { itemRemoveFromCart, loadCart } from "../../action/action";
+import {useDispatch, useSelector} from 'react-redux';
 
 function CartItem({product}) {
   const [productQuantity,setProductQuantity] = useState(product.quantity)
-  const handleRemove = ()=>{
-    itemRemoveFromCart(product.product._id);
+  const dispatch = useDispatch();
+  const handleRemove = async()=>{
+    await itemRemoveFromCart(product.product._id);
+    await loadCart(dispatch);
   }
   const quantityHandle = (e)=>{
     const newQuantity = parseInt(e.target.value);

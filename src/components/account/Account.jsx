@@ -28,9 +28,10 @@ function Account() {
   };
 
   return (
-    <div className='account-conteiner'>
+    
+      <div className='account-conteiner'>
       {(
-        <h3>Welcome, {user.name && user.name.toUpperCase()}</h3>
+        <h3>Welcome, {user && user.name && user.name.toUpperCase()}</h3>
       )}
       {user && user.role==='admin' && <Link to='/admin/dashboard' target="_blank">Dashboard</Link>}
       <Link to='/orders/me'>Orders</Link>
@@ -43,6 +44,7 @@ function Account() {
 
       <button onClick={handleLogout}>Logout</button>
     </div>
+    
   );
 }
 

@@ -3,8 +3,7 @@ import { useDispatch } from "react-redux";
 import { cartItems } from "../reducers/cartSlice";
 
 
-export const loadCart = async () => {
-  const dispatch = useDispatch();
+export const loadCart = async (dispatch) => {
   try {
     const {data} = await axios.get("/api/v1/cart");
     dispatch(cartItems(data.cart.cartItems));

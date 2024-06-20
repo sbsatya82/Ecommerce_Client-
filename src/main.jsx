@@ -1,4 +1,3 @@
-// src/index.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -28,47 +27,52 @@ import AdminLayout from './components/admin/AdminLayout';
 import Dashboard from './components/dashboard/Dashboard.jsx';
 import AllProducts from './components/admin/allProducts/AllProducts.jsx';
 import CreateProduct from './components/admin/allProducts/CreateProduct.jsx';
-
 import UpdateProduct from './components/admin/allProducts/UpdateProduct.jsx';
 import AdminOrders from './components/admin/order/AdminOrder.jsx';
 import AdminOrderDetails from './components/admin/order/AdminOrderDetails.jsx';
 import UserList from './components/admin/user/UserList.jsx';
 import AboutUs from './components/about/AboutUs.jsx';
+import AuthWrapper from './components/authWrapper/AuthWrapper.jsx';
+import AdminWrapper from './components/adminWrapper/AdminWrapper.jsx';
+import NotFound from './components/notFound/NotFound.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route path="" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="about" element={<AboutUs/>} />
+        <Route path="about" element={<AboutUs />} />
         <Route path="products" element={<Products />} />
         <Route path="products/:keyword" element={<Products />} />
         <Route path="product/:productId" element={<ProductDetails />} />
         <Route path="search" element={<Search />} />
-        <Route path="account" element={<Account />} />
-        <Route path="me" element={<Profile />} />
-        <Route path="me/update" element={<EditProfile />} />
-        <Route path="password/update" element={<UpdatePassword />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="shipping" element={<Shipping />} />
-        <Route path="confirm-order" element={<ConfirmOrder />} />
-        <Route path="success" element={<OrderSuccess />} />
-        <Route path="failuer" element={<OrderFailed />} />
-        <Route path="orders/me" element={<Orders />} />
-        <Route path="order/:orderId" element={<OrderDetails />} />
+        {/* Protected Routes */}
+        <Route path="account" element={<AuthWrapper><Account /></AuthWrapper>} />
+        <Route path="me" element={<AuthWrapper><Profile /></AuthWrapper>} />
+        <Route path="me/update" element={<AuthWrapper><EditProfile /></AuthWrapper>} />
+        <Route path="password/update" element={<AuthWrapper><UpdatePassword /></AuthWrapper>} />
+        <Route path="cart" element={<AuthWrapper><Cart /></AuthWrapper>} />
+        <Route path="shipping" element={<AuthWrapper><Shipping /></AuthWrapper>} />
+        <Route path="confirm-order" element={<AuthWrapper><ConfirmOrder /></AuthWrapper>} />
+        <Route path="success" element={<AuthWrapper><OrderSuccess /></AuthWrapper>} />
+        <Route path="failuer" element={<AuthWrapper><OrderFailed /></AuthWrapper>} />
+        <Route path="orders/me" element={<AuthWrapper><Orders /></AuthWrapper>} />
+        <Route path="order/:orderId" element={<AuthWrapper><OrderDetails /></AuthWrapper>} />
       </Route>
-      <Route path="/admin" element={<AdminLayout />}>
+      <Route path="/admin" element={<AdminWrapper><AdminLayout /></AdminWrapper>}>
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path='products/all' element={<AllProducts/>}/>
-        <Route path='products/create' element={<CreateProduct/>}/>
-        <Route path='product/:id' element={<UpdateProduct/>}/>
-        <Route path='orders/all' element={<AdminOrders/>}/>
-        <Route path='order/:orderId' element={<AdminOrderDetails/>}/>
-        <Route path='users/all' element={<UserList/>}/>
+        <Route path='products/all' element={<AllProducts />} />
+        <Route path='products/create' element={<CreateProduct />} />
+        <Route path='product/:id' element={<UpdateProduct />} />
+        <Route path='orders/all' element={<AdminOrders />} />
+        <Route path='order/:orderId' element={<AdminOrderDetails />} />
+        <Route path='users/all' element={<UserList />} />
       </Route>
+      {/* Fallback Route */}
+      <Route path="*" element={<NotFound />} />
     </>
   )
 );

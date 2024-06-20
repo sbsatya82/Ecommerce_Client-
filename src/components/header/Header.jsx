@@ -7,15 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 const Header = () => {
 
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch();
+
   const {cartItems} = useSelector(state => state.cart);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  loadCart();
-
+  
   return (
     <header>
       {/* Top Navigation */}
