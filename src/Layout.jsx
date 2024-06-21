@@ -6,6 +6,8 @@ import { login } from './reducers/userSlice';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { loadCart } from './action/action';
+import Loader from './components/loader/Loader';
+
 
 
 const Layout = () => {
@@ -37,8 +39,8 @@ const Layout = () => {
 
 
   if(loading){
-    return(<>
-      <p>Loading</p>
+    return(<> 
+      <Loader/>
     </>)
   }
   return (

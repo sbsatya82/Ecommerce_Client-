@@ -7,7 +7,7 @@ const AdminWrapper = ({ children }) => {
   const { user } = useSelector((state) => state.user);
 
   if (!user || user.role !== 'admin') {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 
   return children;

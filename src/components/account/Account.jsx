@@ -33,7 +33,7 @@ function Account() {
       {(
         <h3>Welcome, {user && user.name && user.name.toUpperCase()}</h3>
       )}
-      {user && user.role==='admin' && <Link to='/admin/dashboard' target="_blank">Dashboard</Link>}
+      {user && user.role==='admin' && <Link to='/admin/dashboard'>Dashboard</Link>}
       <Link to='/orders/me'>Orders</Link>
       
       <Link to='/wishlist'>Wishlist</Link>

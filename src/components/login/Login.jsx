@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../reducers/userSlice';
 import axios from 'axios';
+import Loader from '../loader/Loader'
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -85,7 +86,7 @@ const Login = () => {
               Cancel
             </button>
             <button type="submit" className="signupbtn" disabled={loading}>
-              {loading ? 'Logging in...' : 'Login'}
+              {loading ? <Loader/> : 'Login'}
             </button>
           </div>
         </form>

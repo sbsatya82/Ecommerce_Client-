@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import  { fetchProducts }  from '../../reducers/productsReducer'
 import { useParams } from "react-router-dom";
 import './ReviewCard.css';
+import Loader from "../loader/Loader"
 
 
 
@@ -24,11 +25,11 @@ const ProductList = () => {
 
   
   if (status === 'loading') {
-    return <div>Loading products...</div>;
+    return <Loader/>;
   }
 
   if (status === 'failed') {
-    return <div>Error: {error}</div>;
+    return <div>Error:{error}</div>;
   }
   return (
     <>

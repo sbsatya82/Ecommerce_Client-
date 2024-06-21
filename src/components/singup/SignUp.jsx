@@ -8,6 +8,7 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
+  
 
   const [message, setMessage] = useState('');
   const [isError, setIsError] = useState(false);
