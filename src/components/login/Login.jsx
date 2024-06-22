@@ -22,6 +22,7 @@ const Login = () => {
 
   const isAuthenticate = async (email, password) => {
     try {
+      console.log(baseApiUrl);
       const { data } = await axios.post(`${baseApiUrl}/api/v1/login`, {
         email: email,
         password: password,
