@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React ,{ useState }from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { baseApiUrl } from '../../features/api';
 
 function EditProfile() {
   const { user } = useSelector((state) => state.user);
@@ -23,7 +24,7 @@ function EditProfile() {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      const response = await axios.put('/api/v1/me/update', {
+      const response = await axios.put(`${baseApiUrl}/api/v1/me/update`, {
         name: formData.name,
         email: formData.email,
       });

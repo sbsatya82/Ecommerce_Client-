@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { baseApiUrl } from '../features/api';
 
 const initialState = {
   products: [],
@@ -13,7 +14,7 @@ export const fetchProducts = createAsyncThunk(
   
   async (keyword='') => {
     try {
-      const response = await axios.get(`/api/v1/products?keyword=${keyword}`);
+      const response = await axios.get(`${baseApiUrl}/api/v1/products?keyword=${keyword}`);
       return response.data;
     } catch (error) {
       throw new Error(error);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import './OrderView.css';
 import axios from "axios";
+import { baseApiUrl } from "../../features/api";
 
 const OrderDetails = () => {
   const { orderId } = useParams();
@@ -9,7 +10,7 @@ const OrderDetails = () => {
   useEffect(() => {
     const fetchOrderDetails = async()=>{
       try {
-        const {data}  = await axios.get(`/api/v1/order/${orderId}`);
+        const {data}  = await axios.get(`${baseApiUrl}/api/v1/order/${orderId}`);
         console.log(data.order);
         setOrder(data.order);
       } catch (error) {

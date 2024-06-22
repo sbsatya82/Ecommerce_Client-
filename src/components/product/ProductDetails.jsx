@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './ReviewCard.css'
 import { addToCart } from "../../reducers/cartSlice";
 import { loadCart } from "../../action/action";
+import { baseApiUrl } from "../../features/api";
 
 function ProductDetails() {
   const { productId } = useParams();
@@ -20,7 +21,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
-        const { data } = await axios.get(`/api/v1/product/${productId}`);
+        const { data } = await axios.get(`${baseApiUrl}/api/v1/product/${productId}`);
         setProduct(data.product);
         setLoading(false); // Mark loading as complete
       } catch (error) {
@@ -45,7 +46,7 @@ function ProductDetails() {
       return;
     }
     try{
-      const { data } = await axios.post(`/api/v1/cart/new`,{
+      const { data } = await axios.post(`${baseApiUrl}/api/v1/cart/new`,{
         productId : productId,
       });
       await loadCart(dispatch);

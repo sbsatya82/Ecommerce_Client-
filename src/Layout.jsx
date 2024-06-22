@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { loadCart } from './action/action';
 import Loader from './components/loader/Loader';
+import { baseApiUrl } from './features/api';
 
 
 
@@ -20,7 +21,7 @@ const Layout = () => {
   useEffect(()=>{
     const fetchData = async()=>{
       try {
-        const {data} = await axios.get('/api/v1/me');
+        const {data} = await axios.get(`${baseApiUrl}/api/v1/me`);
         if(data.success ===true){
           const loggedInUser = data.user;
           dispatch(login(loggedInUser));

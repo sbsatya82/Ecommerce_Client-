@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../reducers/userSlice';
 import axios from 'axios';
 import Loader from '../loader/Loader'
+import { baseApiUrl } from '../../features/api';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Login = () => {
 
   const isAuthenticate = async (email, password) => {
     try {
-      const { data } = await axios.post('/api/v1/login', {
+      const { data } = await axios.post(`${baseApiUrl}/api/v1/login`, {
         email: email,
         password: password,
       });

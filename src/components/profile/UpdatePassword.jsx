@@ -1,6 +1,7 @@
 import React ,{ useState }from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
+import { baseApiUrl } from '../../features/api';
 
 const UpdatePassword = () => {
   const { user } = useSelector((state) => state.user);
@@ -20,7 +21,7 @@ const UpdatePassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.put("/api/v1/password/update", {
+      const response = await axios.put(`${baseApiUrl}/api/v1/password/update`, {
         oldPassword: formData.oldPassword,
         newPassword: formData.newPassword,
         confirmPassword: formData.confirmPassword,

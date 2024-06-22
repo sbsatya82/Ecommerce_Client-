@@ -5,6 +5,7 @@ import { Doughnut, Line } from 'react-chartjs-2';
 import { Chart as ChartJS, LineElement, CategoryScale, ArcElement, LinearScale, PointElement, Title, Tooltip, Legend } from 'chart.js';
 import './Dashboard.css';
 import axios from 'axios';
+import { baseApiUrl } from '../../features/api';
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, ArcElement, PointElement, Title, Tooltip, Legend);
 
@@ -19,9 +20,9 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [usersRes, productsRes, ordersRes] = await Promise.all([
-          axios.get('/api/v1/users'),
-          axios.get('/api/v1/admin/products'),
-          axios.get('/api/v1/orders')
+          axios.get(`${baseApiUrl}/api/v1/users`),
+          axios.get(`${baseApiUrl}/api/v1/admin/products`),
+          axios.get(`${baseApiUrl}/api/v1/orders`)
         ]);
 
         setUsers(usersRes.data.users);

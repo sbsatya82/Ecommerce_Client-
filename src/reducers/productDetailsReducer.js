@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { baseApiUrl } from '../features/api';
 
 // Define initial state for product details
 const initialState = {
@@ -13,10 +14,10 @@ export const fetchProductDetails = createAsyncThunk(
   'productDetails/fetchProductDetails',
   async (productId) => {
     try {
-      const {data} = await axios.get(`/api/v1/product/${productId}`);
+      const {data} = await axios.get(`${baseApiUrl}/api/v1/product/${productId}`);
       return data;
     } catch (error) {
-      const {data} = await axios.get(`/api/v1/product/${productId}`);
+      const {data} = await axios.get(`${baseApiUrl}/api/v1/product/${productId}`);
       throw error;
     }
   }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {logout} from '../../reducers/userSlice'
 import '../account/Account.css';
 import axios from 'axios';
+import {baseApiUrl} from '../../features/api'
 
 function Account() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function Account() {
   const handleLogout = async() => {
     dispatch(logout());
     try {
-      const {data} = await axios.get('/api/v1/logout');
+      const {data} = await axios.get(`${baseApiUrl}/api/v1/logout`);
       console.log(data.message);
     } catch (error) {
       console.log(error);
